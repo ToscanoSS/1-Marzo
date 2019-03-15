@@ -1,0 +1,22 @@
+%Problema1
+%Ecuaciones1.m
+
+function dxdt= Ecuaciones1(t,x)
+a=0.4;
+b=0.4;
+c=2;
+d=0.09;
+dxdt= [a*x(1)-b*x(1)*x(2) ; d*x(1)*x(2)-c*x(2)]
+end
+
+%call_Ecuaciones1.m
+
+function [t,x] = call_Ecuaciones1 
+tspan=[0;50];
+x0=[100;8];
+[t,x] = ode45(@Ecuaciones1,tspan,x0)
+subplot(2,1,1)
+plot(t,x(:,1))
+subplot(2,1,2)
+plot(t,x(:,2))
+end
